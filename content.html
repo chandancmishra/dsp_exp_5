@@ -1,0 +1,401 @@
+<!-- This file needs to be edited by the lab developer to suit the requirements of their lab in particular.-->
+<!-- Add class="default" to include any element as it is specified in default.html. Do not include class="default" to the elements that you want to edit -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Digital Signal Processing Lab</title>
+        <script type="text/javascript" src="a5.js"></script>
+    </head>
+
+    <body>
+        <div id="experiment">
+            <!-- The Experiment Document Container-->
+            <!-- The lab Header contains the logo and the name of the lab, usually displayed on the top of the page-->
+
+            <header class="default" id="experiment-header">
+                <div class="logo" id="experiment-header-logo">
+                    <!-- Enclose the logo image of your lab or write it in text-->
+                    <img src="../images/logo.jpg"></div>
+
+                <div class="heading" id="experiment-header-heading">
+                    <!-- Write the name of your lab and link it to the home 
+          page of your lab (h1 tag is preferred while writing your 
+          lab name)-->
+                    <a href="../index.html">Dsp lab</a>
+                </div><!-- Add any additional element you want to add to the lab 
+        header, For example : Help (Enclosing them with suitable 
+        div is recommended)-->
+            </header><!-- The lab article is the main content area where all the experiment content sits-->
+
+            <article id="experiment-article">
+                <!-- The lab article has an header, optional navigational 
+        menu, number of sections, an optional sidebar and a closing 
+        footer-->
+
+                <div class="breadcrumb" id="experiment-article-breadcrumb"></div>
+
+                <header class="heading" id="experiment-article-heading">
+                   Study of convolution: series and parallel system. 
+                </header><!-- Navigation menu is useful to organize the view of multiple sections inside the article-->
+
+                <nav class="default" id="experiment-article-navigation">
+                    <ul id="experiment-article-navigation-menu">
+                        <!-- The menu can be dynamically generated to contain 
+              the headings of your sections or instead write the 
+              menu items of your choice individually enclosedu in 
+              &lt;li&gt; tag as shown below-->
+                    </ul>
+                </nav><!-- All the sections of your lab or experiment can be 
+          enclosed together with a div element as shown below-->
+
+                <div id="experiment-article-sections">
+                    <!------------------------------- First section of the article---------------------------------->
+
+                    <section id="experiment-article-section-1">
+                        <div class="icon" id="experiment-article-section-1-icon">
+                            <!-- Enclose the icon image of your lab -->
+                            <img src="../images/introduction.jpg"></div>
+                        <!-- The heading for the section can be enclosed in a div tag. -->
+
+                        <div class="heading" id="experiment-article-section-1-heading">
+                            Introduction
+                        </div><!-- Write the section content inside a paragraph element, You can also include images with &lt;img&gt; tag -->
+
+                        <div class="content" id="experiment-article-section-1-content">                            
+                            <p>This experiment enables a student to understand
+                <ul>
+                    <li>1.Linear Convolution</li>
+                    <li>2.Series (cascaded) connection of LTI systems.</li>
+                    <li>3.Parallel connection of LTI systems.</li>
+                </ul>
+            
+                
+                </p>                            
+                        </div>
+                    </section>
+                    <!-------------------------- Second section of the article---------------------------------------->
+
+                    <section id="experiment-article-section-2">
+                        <div class="icon" id="experiment-article-section-2-icon">
+                            <!-- Enclose the icon image of your lab. -->
+                            <img src="../images/theory.jpg"></div>
+                        <!-- The heading for the section can be enclosed in a div tag. -->
+
+                        <div class="heading" id="experiment-article-section-2-heading">
+                            Theory
+                        </div><!-- Write the section content inside a paragraph element, we can also include images with &lt;img&gt; tag -->
+
+                        <div class="content" id="experiment-article-section-2-content">                            
+                            <p>Theory</p>
+                            <p class="heading-content">Convolution is a fundamental constituent of digital signal processing. When an input signal 
+                                sequence x(k)
+                                passes through a filter whose impulse response is h(k) as shown in the figure below, the output of the filter be denoted as y(k),
+                                then mathematically, </p>
+                            <p style="text-align:">y(n)=h(k)*x(k)</p>
+                            <p>where '*' symbol means convolution.
+                            </p><center><img src="../images/exp5/pic-1.png" style="height:50%;width:50%;" align="center" /></center>
+                            <p class="heading-content">Let's say that the input sequence x(k) has length Q in time domain, the impulse response h(k) has 
+                                length P in time-domain, then mathematically,<p style="text-align:">`y(x)=sum_(k=0)^(P+Q-2)h(k)x(n-k)`</p></p>
+                            <p class="heading-content">Thus the length of the output sequence y(n) will be (P+Q-1)</p>
+                            <p class="heading-content">Thus performing convolution involves the following steps:</p>
+                            <p>1.Plotting both h(k) and x(k).</p>
+                            <p>2.Flipping the x(k) sequence about the k = 0 value to get x(-k).</p>
+                            <p>3.Summing the products of h(k) and x(0-k) for all k, to obtain y(0).</p>
+                            <p>4.Shifting x(-k) one sample to the right.</p>
+                            <p>5.Summing the products of h(k) and x(1-k) for all k to obtian y(1).</p>
+                            <p>6.Repeat steps (5) & (6) i.e. shifting and summing products until there's no overlap of h(k) and 
+                                the shifted x(n-k), in which case all further y(n)'s are zero.</p>
+                            <p>Let the input sequence x(k) passes through two filters with impulse response h1(k) and h2(k), and 
+                                the output sequence after the signal passes through the first and the second filter be denoted as
+                                y1(n) and y2(n), then we have the following relations</p>
+                            <p style="text-align:">`y(x)=sum_(k=0)^(P+Q-2)h(k)x(n-k)`</p>
+                            <p style="text-align:">`y1(n)=h1(k)**x(k)`</p>
+                            <p style="text-align:">`y2(n)=h2(k)**y1(k)`</p>
+                            <p style="text-align:">`=h2(k)**(h1(k)**x(k))`</p>
+                            <p>For a linear time-invariant system, we thus have,</p>
+                            <p style="text-align:">`y2(n) = (h1(k) **h2(k)) **x(k)`</p>
+                            <p style="text-align:">`= h(k) ** x(k)`</p>
+                            <p>Thus the effective transfer function of the two filter blocks in series is given by,</p>
+                            <p style="text-align:">`h(k) = h1(k) ** h2(k)`</p>
+                            <p>Let the input sequence x(k) passes through two filters in parallel with impulse response h1(k) 
+                                and h2(k), and the output sequence after the signal passes through the first and the second filter be denoted as 
+                                y1(n) and y2(n) as shown in the figure below.</p>
+                            <p>We thus have the following relations,</p>
+                            <p style="text-align:">`y1(n) = h1(k) **x(k)`</p>
+                            <p style="text-align:">`y2(n) = h2(k)**x(k)`</p>
+                            <p>The combined output is thus given by,</p>
+                            <p style="text-align:">`y(n) = y1(n) + y2(n)`</p>
+                            <p style="text-align:">`= h1(k) ** x(k) + h2(k)**x(k)`</p>
+                            <p style="text-align:">`=(h1(k) + h2(k)) ** x(k))`</p>
+                           <p>Thus the effective transfer function of the two filter blocks in parallel is given by</p>
+                           <p style="text-align:">`h(k) = h1(k) + h2(k)`</p>
+                        </div>
+                    </section>
+                    <!-------------------------- Third section of the article---------------------------------------->
+
+                    <section id="experiment-article-section-3">
+                        <div class="icon" id="experiment-article-section-3-icon">
+                            <!-- Enclose the icon image of your lab. -->
+                            <img src="../images/objective.jpg"></div>
+
+                        <div class="heading" id="experiment-article-section-3-heading">
+                            procedure
+                        </div>
+
+                        <div class="content" id="experiment-article-section-3-content">                            
+                            <p>Please follow these steps to do the experiment.</p>
+                            <p>Part 1: Linear Convolution</p>
+                            <p>1.By using<img style="width:229px;height:36px;" src="../images/exp5/but.png" alt="" /> you can switch between 
+                                of this experiment.</p>
+                            <p class="heading-content">2.Click on the <b>Simulator</b> tab.It will open the workspace. By default workspace of 
+                                the Part 1 of the experiment is available.</p>
+                            <p class="heading-content">3.See the movie in experiment page by pressing help <b>button</b> to understand how the 
+                                different steps, as mentioned next, are to be executed.</p>
+                            <p>4.Go to the simulation space and select <b>Browse Blocks</b></p>
+                            <p class="heading-content">5.Click and drag <b>X(n)</b> block onto the virtual space and select any one signal from the <b>X(n)</b> 
+                                block property window. Here we have provided four different signals to understand linear convolution.</p>
+                            <center><img style="width:520px;height:343px;" src="../images/exp5/fig-1.png" alt="" /><br/>
+                                Fig-1 </center>
+                            <p class="heading-content">6.Now drag and place <b>h(n)</b> block and select any one from the given signals. Finally place virtual 
+                                scope onto the virtual work space.</p>
+                            <center><img style="width:529px;height:352px;" src="../images/exp5/fig-2.png" alt="" /><br/>
+                                Fig-2 </center>
+                            <p class="heading-content">7.Make connection as shown in the figure below.</p>
+                            <center><img style="width:481px;height:198px;" src="../images/exp5/fig-3.png" alt="" /><br/>
+                                Fig-3 </center>
+                            <p class="heading-content">8.Click on scope two view the graph plot. Here you find three waveforms. By using slider provided 
+                                you can take the values of the graph for different sample values.</p>
+                           <center><img style="width:677px;height:639px;" src="../images/exp5/fig-4.png" alt="" /><br/>
+                            Fig-4 </center>
+                            <p class="heading-content">9.Take the readings of the graph by moving the slider for first ten to fifteen samples it will 
+                                give you Table 1.</p>
+                            <p class="heading-content">10.Next by changing signals in both <b>X(n)</b> and <b>h(n)</b> you can make number of tables as required.</p>
+                            <p class="heading-content">11.Click on Report Generation <img style="width:127px;height:27px;" src="../images/exp4/abc.png" alt="" />button.
+                                The reporting window will appear. Here on by clicking 
+                                Add Table, you can add tables. In each tables, by clicking add row will be able to add row.</p>
+                            <p class="heading-content">12.For each table make a screenshot of your plots by taking print screen and edit in any image 
+                                editor to upload a image for each table.</p>
+                            <p class="heading-content">13.Write observation and discuss about error(s) for different set of values. Then click Yes I
+                                have finished my Experiment button to submit your report.</p>
+                            <p class="heading-content">14.<b>Note:</b>If at any time during making circuit if you face any problem please use reset button
+                                to erase the circuit and draw the circuit freshly. </p>
+                            <p class="heading-content">Part 2: Series System.</p>
+                            <p class="heading-content">1.Click on this button<b>part2</b>.Switch to Part 2 of this experiment. It will start part 2 
+                                of this experiment. </p>
+                            <p class="heading-content">2.See the movie in experiment page by pressing help <b>button</b>  to understand how the 
+                                following steps are to be executed.</p>
+                            <p class="heading-content">3.Go to the simulation space and select <b>Browse Blocks</b></p>
+                            <p class="heading-content">4.You have to make the circuit given below. Here you have to use two instances of <b>X(n)</b> 
+                                block</p>
+                            <center><img style="width:591px;height:220px;" src="../images/exp5/fig-5.png" alt="" /><br/>
+                            Fig-1 </center>
+                            <p class="heading-content">5.Click and drag <b>X(n)</b> onto the virtual space and select any one signal from the given signals
+                                in property window. Repeat this step another time to place one more instance onto the virtual space.</p>
+                            <center><img style="width:528px;height:409px;" src="../images/exp5/fig-6.png" alt="" /><br/>
+                                Fig-2 </center>
+                            <p class="heading-content">6.Drag place both <b>h<sub>1</sub>(n)</b> and <b>h<sub>2</sub>(n)</b> onto the virtual work space. 
+                                Select any signal from the given 
+                                signals.</p>
+                            <center><img style="width:527px;height:408px;" src="../images/exp5/fig-7.png" alt="" /><br/>
+                                Fig-3 </center>
+                            <p class="heading-content">7.Then place the cascaded block and select signals for each <b>h(n)</b>, here we have given 
+                                provision 
+                                to select two signals for each <b>h(n)</b>.</p>
+                             <center><img style="width:523px;height:392px;" src="../images/exp5/fig-8.png" alt="" /><br/>
+                                  Fig-4 </center>
+                            <p class="heading-content">8.Finally place scope and make connection as shown in the figure below.</p>
+                           <center><img style="width:594px;height:209px;" src="../images/exp5/fig-9.png" alt="" /><br/>
+                              Fig-5 </center>
+                            <p class="heading-content">9.Click on scope two view the graph plot. Here you find two graphs from that you can compare the 
+                                pattern of two waveforms. By using slider provided between the two plots you can take the values of the each graph for 
+                                different sample values.</p>
+                            <center><img style="width:674px;height:647px;" src="../images/exp5/fig-10.png" alt="" /><br/>
+                            Fig-6 </center>
+                            <p class="heading-content">10.Take the readings of the graph by moving the slider for first ten to fifteen samples it will 
+                                give you Table 1.</p>
+                            <p class="heading-content">11.Make many tables as required by selecting different combinations of signals for each block.</p>
+                            <p class="heading-content">12.Click on Report Generation <img style="width:127px;height:27px;" src="../images/exp4/abc.png" alt="" /> button.
+                                The reporting window will appear. Here on by clicking 
+                                Add Table , you can add tables. In each tables, by clicking add row will be able to add row.</p>
+                            <p class="heading-content">13.For each table make a screenshot of your plots by taking print screen and edit in any image
+                                editor to upload a image for each table.</p>
+                            <p class="heading-content"><b>Note:</b> If at any time during making circuit if you face any problem please use reset button to 
+                                erase the circuit and draw the circuit freshly.</p>
+                            <p>Part 3: Parallel System</p>
+                            <p>1.Click on this button. Switch to <img style="width:65px;height:36px;" src="../images/exp5/but2.png" alt="" /> of this experiment. 
+                                It will start part 3 of this experiment. </p>
+                            <p class="heading-content">2.See the movie in experiment page by pressing help <b>button</b> to understand how the 
+                                following steps are to be executed.</p>
+                            <p>3.Go to the simulation space and select <b>Browse Blocks</b>.</p>
+                            <p class="heading-content">4.You have to make the circuit given below. Here you have to use two instances of <b>X(n)</b> block.</p> 
+                            <center><img style="width:586px;height:349px;" src="../images/exp5/fig-11.png" alt="" /><br/>
+                             Fig-1 </center>
+                            <p class="heading-content">5.Click and drag <b>X(n)</b> onto the virtual space and select any one signal from the given signals in
+                                property window. Repeat this step another time to place one more instance onto the virtual space</p>
+                            <center><img style="width:519px;height:374px;" src="../images/exp5/fig-12.png" alt="" /><br/>
+                            Fig-2 </center>
+                            <p class="heading-content">6.Drag place both <b>h<sub>1</sub>(n)</b> and <b>h<sub>2</sub></b>(n) onto the virtual work space. 
+                                Select any signal from the
+                                given signals.</p>
+                            <center><img style="width:533px;height:434px;" src="../images/exp5/fig-13.png" alt="" /><br/>
+                               Fig-3 </center>  
+                            <p class="heading-content">7.Then place the <b>h<sub>1</sub>(n)+h<sub>2</sub>(n)</b> block and select signals for each <b>h<sub>1</sub>(n)</b> 
+                                and <b>h<sub>2</sub>(n)</b> ,here we have given provision to select two signals for each <b>h(n)</b>.
+                             <center><img style="width:537px;height:457px;" src="../images/exp5/fig-14.png" alt="" /><br/>
+                            Fig-4 </center>
+                            <p class="heading-content">8.Similarly place adder and scope and make connection as shown in the figure below.</p>
+                           <center><img style="width:588px;height:399px;" src="../images/exp5/fig-15.png" alt="" /><br/>
+                            Fig-5 </center>
+                            <p class="heading-content">9.Click on scope two view the graph plot. Here you find two graphs from that you can compare
+                                the pattern of two waveforms. By using slider provided between the two plots you can take the values of the each graph
+                                for different sample values.</p>
+                            <center><img style="width:682px;height:647px;" src="../images/exp5/fig-16.png" alt="" /><br/>
+                                Fig-6 </center>
+                            <p class="heading-content">10.Take the readings of the graph by moving the slider for first ten to fifteen samples it will 
+                                give you Table 1.</p>
+                            <p class="heading-content">11.Make many tables as required by selecting different combinations of signals for each block.</p>
+                            <p class="heading-content">12.Click on Report Generation <img style="width:127px;height:27px;" src="../images/exp4/abc.png" alt="" /> button.
+                                The reporting window will appear. Here on by clicking 
+                                Add Table , you can add tables. In each tables, by clicking add row will be able to add row.</p>
+                            <p class="heading-content">13.For each table make a screenshot of your plots by taking print screen and edit in any image 
+                                editor to upload a image for each table.</p>
+                            <p class="heading-content">14.Write observation and discuss about error(s) for different set of values . Then click Yes I 
+                                have finished my Experiment button to submit your report.</p>
+                            <p><b>Note:</b> If at any time during making circuit if you face any problem please use reset button to erase the circuit 
+                                and draw
+                                the circuit freshly.</p>
+                        </div>
+                        
+                    </section>
+                    <!-------------------------- Fourth section of the article---------------------------------------->
+
+                    <section id="experiment-article-section-4">
+                        <div class="icon" id="experiment-article-section-4-icon">
+                            <!-- Enclose the icon image of your lab.-->
+                            <img src="../images/simulation.jpg"></div>
+
+                        <div class="heading" id="experiment-article-section-4-heading">
+                            simulator
+                        </div>
+
+                        <div class="content" id="experiment-article-section-4-content">                            
+                            <div align="left">
+                        
+                            	
+                                        	<input type="button" name="part1" value="Part 1" class="btn_sub1" onclick="showDiv('1');" />
+                                            &nbsp;&nbsp;
+                                        	<input type="button" name="part2" value="Part 2" class="btn_sub1" onclick="showDiv('2');" />
+                                            &nbsp;&nbsp;
+                                        	<input type="button" name="part3" value="Part 3" class="btn_sub1" onclick="showDiv('3');" />
+                                        
+                                
+                        </div>
+                        
+                    	<div align="center" id="part1Div">
+                        
+                            <div align="left" style="padding-left:40px;">
+                            
+                                    	<img src="../images/img/help.jpg" align="right" style="cursor:pointer;width:30px;height:30px" title="Help"onclick="window.open('help1.html','helpWindow','width=760,height=700,screenX=300,screenY=120')" />
+                                   
+                            </div>
+                            
+                            <div align="center">
+                            
+                              <object width="750" height="700">
+                                  <param name="movie" value="expta.swf">
+                                  <embed src="expta.swf" width="750" height="700">
+                                  </embed>
+                              </object>
+                              
+                            </div>  
+                        
+                        </div>
+                        
+                    	<div align="center" id="part2Div" style="display:none;">
+                        
+                            <div align="left" style="padding-left:40px;">
+                            
+                                    	<img src="../images/img/help.jpg" align="right" style="cursor:pointer;width:30px;height:30px" title="Help"onclick="window.open('help1.html','helpWindow','width=760,height=700,screenX=300,screenY=120')" />
+                                   
+                        	</div>
+                            
+                            <div align="center">
+                            
+                              <object width="750" height="700">
+                                  <param name="movie" value="exptb.swf">
+                                  <embed src="exptb.swf" width="750" height="700">
+                                  </embed>
+                              </object>
+                              
+                            </div>  
+                        
+                        </div>
+                        
+                        
+                        <div align="center" id="part3Div" style="display:none;">
+                        
+                            <div align="left" style="padding-left:40px;">
+                            
+                                    	<img src="../images/img/help.jpg" align="right" style="cursor:pointer;width:30px;height:30px" title="Help"onclick="window.open('help1.html','helpWindow','width=760,height=700,screenX=300,screenY=120')" />
+                                   
+                        	</div>
+                            
+                            <div align="center">
+                            
+                              <object width="750" height="700">
+                                  <param name="movie" value="exptb.swf">
+                                  <embed src="exptc.swf" width="750" height="700">
+                                  </embed>
+                              </object>
+                              
+                            </div>  
+                        
+                        </div>
+                                                    
+                        </div>
+                    </section>
+                    <!-------------------------- Fifth section of the article---------------------------------------->
+
+                  
+
+                    <!-------------------------- Sixth section of the article---------------------------------------->
+
+                   
+                    <!-------------------------- Seventh section of the article---------------------------------------->
+
+                    <section id="experiment-article-section-7">
+                        <div class="icon" id="experiment-article-section-7-icon">
+                            <!-- Enclose the icon image of your lab.-->
+                            <img src="../images/quizzes.jpg"></div>
+
+                        <div class="heading" id="experiment-article-section-7-heading">
+                            Quizzes
+                        </div>
+
+                        <div class="content" id="experiment-article-section-7-content">                            
+                            <p>Quizzes content.....</p>                           
+                        </div>
+                    </section>
+                    <!-------------------------- Eight section of the article---------------------------------------->
+
+                    <section id="experiment-article-section-8">
+                        <div class="icon" id="experiment-article-section-8-icon">
+                            <!-- Enclose the icon image of your lab.-->
+                            <img src="../images/reference.jpg"></div>
+
+                        <div class="heading" id="experiment-article-section-8-heading">
+                            Reference
+                        </div>
+
+                        <div class="content" id="experiment-article-section-8-content">                            
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </section>                   
+
+                </div>
+            </article>
+        </div>
+    </body>
+</html>
